@@ -6,8 +6,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 
-# Create results directory if it doesn't exist
-os.makedirs('results', exist_ok=True)
+# Code written with ZotGPT - Claude Sonnet 3.7 
 
 def load_data(filepath):
     """
@@ -218,7 +217,7 @@ def main():
     # Visualize results
     visualize_results(trace, competence_estimates, consensus_answers, majority_votes, informant_ids, question_ids)
     
-    print("\nAnalysis complete. See generated plots in the 'results' folder.")
+    print("\nAnalysis complete. Plots saved in results folder.")
 
 if __name__ == "__main__":
     main()

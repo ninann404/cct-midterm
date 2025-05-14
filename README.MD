@@ -25,3 +25,7 @@ Most competent: Informants 1, 3, and 4 (tied at 0.90)
 Least competent: Informant 9 (0.56)
 
 The simple majority vote answer for each question showed that there were differences in 5/20 questions, in which the CCT model consistently estimated a consensus of "1" while the majority actually chose "0". This may be due to the method in which the CCT model weighed the estimated informant competence vs how the majority voting treated everything with equal weight. This means the CCT was able to provide better convergence statistics by accounting for participant competence due to the fact that it gave more weight to more knowledgeable participants. 
+
+## Acknowledgements 
+Used information and equations from COGS107 class repository, Spring 2025
+The code for cct.py written using ZotGPT (Claude Sonnet 3.7 Model)
