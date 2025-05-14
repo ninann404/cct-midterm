@@ -28,4 +28,5 @@ The simple majority vote answer for each question showed that there were differe
 
 ## Acknowledgements 
 Used information and equations from COGS107 class repository, Spring 2025
+
 The code for cct.py written using ZotGPT (Claude Sonnet 3.7 Model)
