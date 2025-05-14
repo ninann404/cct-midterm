@@ -4,6 +4,10 @@ import pymc as pm
 import arviz as az
 import matplotlib.pyplot as plt
 import seaborn as sns
+import os
+
+# Create results directory if it doesn't exist
+os.makedirs('results', exist_ok=True)
 
 def load_data(filepath):
     """
@@ -17,7 +21,7 @@ def load_data(filepath):
     pandas.DataFrame: Original dataframe for reference
     """
     # Load the data
-    df=pd.read_csv(filepath)
+    df = pd.read_csv(filepath)
     
     # Extract the binary response matrix (excluding the 'Informant' column)
     X = df.iloc[:, 1:].values
@@ -144,14 +148,14 @@ def visualize_results(trace, competence_estimates, consensus_answers, majority_v
     az.plot_posterior(trace, var_names=['D'])
     plt.title('Posterior Distributions of Informant Competence')
     plt.tight_layout()
-    plt.savefig('competence_posterior.png')
+    plt.savefig('results/competence_posterior.png')
     
     # Plot posterior distributions for consensus answers
     plt.figure(figsize=(15, 10))
     az.plot_posterior(trace, var_names=['Z'])
     plt.title('Posterior Distributions of Consensus Answers')
     plt.tight_layout()
-    plt.savefig('consensus_posterior.png')
+    plt.savefig('results/consensus_posterior.png')
     
     # Plot competence estimates with informant IDs
     plt.figure(figsize=(10, 6))
@@ -167,7 +171,7 @@ def visualize_results(trace, competence_estimates, consensus_answers, majority_v
     plt.axhline(y=0.5, color='r', linestyle='--', label='Random Guessing')
     plt.legend()
     plt.tight_layout()
-    plt.savefig('competence_estimates.png')
+    plt.savefig('results/competence_estimates.png')
     
     # Compare consensus answers with majority votes
     plt.figure(figsize=(12, 6))
@@ -184,7 +188,7 @@ def visualize_results(trace, competence_estimates, consensus_answers, majority_v
     plt.yticks([0, 1])
     plt.legend()
     plt.tight_layout()
-    plt.savefig('consensus_vs_majority.png')
+    plt.savefig('results/consensus_vs_majority.png')
     
     # Plot posterior probabilities for consensus answers
     plt.figure(figsize=(12, 6))
@@ -199,11 +203,11 @@ def visualize_results(trace, competence_estimates, consensus_answers, majority_v
     plt.ylim(0, 1)
     plt.legend()
     plt.tight_layout()
-    plt.savefig('consensus_probabilities.png')
+    plt.savefig('results/consensus_probabilities.png')
 
 def main():
     # Load data
-    X, df = load_data('/home/jovyan/Cultural-Consensus-Theory-with-PyMC/cct-midterm/data/plant_knowledge.csv')
+    X, df = load_data('data/plant_knowledge.csv')
     
     # Run CCT model
     trace = run_cct_model(X)
@@ -214,8 +218,7 @@ def main():
     # Visualize results
     visualize_results(trace, competence_estimates, consensus_answers, majority_votes, informant_ids, question_ids)
     
-    print("\nAnalysis complete. See generated plots for visualizations.")
+    print("\nAnalysis complete. See generated plots in the 'results' folder.")
 
 if __name__ == "__main__":
-    main() 
-    
+    main()
